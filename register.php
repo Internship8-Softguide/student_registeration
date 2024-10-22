@@ -9,9 +9,13 @@
         <div class="col-5">
           <div class="card" style="height: 400px">
             <div class="card-body">
-                <?php if (isset($_REQUEST['success'])) {
-                    echo "<div class='alert alert-success'>$_REQUEST[success]</div>";
-                }?>
+                <?php if (isset($_REQUEST['success'])) { ?>
+
+                    <div class='alert alert-success'><?= $_REQUEST["success"] ?></div>
+                
+                <?php } else { ?>
+                    <div class='alert alert-danger'><?= $_REQUEST["success"] ?></div>
+                <?php } ?>
                 <form action="./server.php" method="post">
                     <div class="form-group my-2">
                         <label for="roll" class="form-label">Roll Number</label>
