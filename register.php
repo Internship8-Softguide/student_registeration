@@ -9,7 +9,10 @@
         <div class="col-5">
           <div class="card" style="height: 400px">
             <div class="card-body">
-                <form action="" method="get">
+                <?php if (isset($_REQUEST['success'])) {
+                    echo "<div class='alert alert-success'>$_REQUEST[success]</div>";
+                }?>
+                <form action="./server.php" method="post">
                     <div class="form-group my-2">
                         <label for="roll" class="form-label">Roll Number</label>
                         <input type="text" name="roll" id="roll" class="form-control">
@@ -22,7 +25,7 @@
                         <label for="age" class="form-label">Age</label>
                         <input type="number" name="age" id="age" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary my-2">Submit</button>
+                    <button type="submit" class="btn btn-primary my-2">Submit</button>   
                 </form>
             </div>
           </div>
