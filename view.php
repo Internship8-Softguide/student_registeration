@@ -1,3 +1,4 @@
+<?php require_once ("./stroage/student.php") ?>
 <?php include_once ("./layout/header.php") ?>
 <h1 class="text-center my-5">Student List!</h1>
       <div class="row">
@@ -19,14 +20,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      $student = json_decode($_COOKIE['student'], true);?>
-                    <tr>
-                        <td><?= $student['roll'] ?></td>
-                        <td><?= $student['name'] ?></td>
-                        <td><?= $student['email'] ?></td>
-                        <td><?= $student['age'] ?></td>
-                    </tr>
+                      <?php for ($i = 0; $i < count($student_list) ; $i++) { ?>
+                          <tr>
+                              <td><?= $student_list[$i]['roll'] ?></td>
+                              <td><?= $student_list[$i]['name'] ?></td>
+                              <td><?= $student_list[$i]['email'] ?></td>
+                              <td><?= $student_list[$i]['age'] ?></td>
+                          </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
