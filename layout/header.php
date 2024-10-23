@@ -6,6 +6,11 @@
     <title>Student Registration</title>
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <script src="./js/bootstrap.js"></script>
+    <style>
+      .text-danger{
+        font-size: 12px;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand bg-dark navbar-dark">
