@@ -1,6 +1,7 @@
 <?php
 $e_roll = $e_name = $e_age = $e_email = '';
 $roll = $name = $age = $email = '';
+$success = false;
 if (isset($_POST['roll'])) {
     $roll = $_POST["roll"];
     $name = $_POST["name"];
@@ -16,7 +17,7 @@ if (isset($_POST['roll'])) {
     if ($name === '') {
         $e_name = 'Name must not be blank!';
     } else {
-        if (!preg_match("/^[a-zA-Z]+$/", $name)) {
+        if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
             $e_name = 'Name must be only string!';
         }
     }
@@ -34,6 +35,11 @@ if (isset($_POST['roll'])) {
             $e_email = 'Invalid email format!';
         }
     }
+    if ($e_name === '' && $e_age === '' && $e_email === '' && $e_roll === '') {
+        $student = ["roll" => $roll,"name" => $name,"email" => $email,"age" => $age];
+        setcookie("student", json_encode($student), time() + 3600 * 24 * 14, '/');
+        $success = true;
+    }
 }
 ?>
 <?php require_once ("./layout/header.php") ?>
@@ -46,9 +52,9 @@ if (isset($_POST['roll'])) {
         </div>
         <div class="col-5">
           <div class="card" style="height: 400px">
-            <div class="card-body">
-                <?php if (isset($_REQUEST['success'])) { ?>
-                    <div class='alert alert-success'><?= $_REQUEST["success"] ?></div>
+            <div class="m-2">
+                <?php if ($success) { ?>
+                    <div class='alert alert-success alert-sm'>Student Saved!</div>
                 <?php } ?>
                 <form action="" method="post">
                     <div class="form-group my-1">
