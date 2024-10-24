@@ -32,7 +32,6 @@ if (isset($_POST['roll'])) {
                 $_SESSION['student_list'] = $student_list;
             }
         }
-
     }
 }
 ?>
